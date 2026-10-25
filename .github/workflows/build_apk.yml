@@ -8,16 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Save App
+      - name: Simple Build
         run: |
-          mkdir -p dist
-          cp app.py dist/app.py
+          mkdir -p release
+          cp app.py release/app.py
 
-      - name: Upload
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: app-release-apk
-          path: dist/
+          path: release/
