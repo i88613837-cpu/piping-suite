@@ -8,20 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Prepare Workspace
+      - name: Prepare Output Directory
         run: |
           mkdir -p build_output
-          echo "Ultimate Industrial Piping Suite v10.0" > build_output/README.txt
           cp app.py build_output/app.py
+          echo "Build Success - Ultimate Industrial Piping Suite v10.0" > build_output/info.txt
 
-      - name: Upload Package Artifact
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: piping-suite-app
