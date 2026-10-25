@@ -8,17 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Prepare Output Directory
+      - name: Create Package Archive
         run: |
-          mkdir -p build_output
-          cp app.py build_output/app.py
-          echo "Build Success - Ultimate Industrial Piping Suite v10.0" > build_output/info.txt
+          mkdir -p output
+          cp app.py output/app.py
+          echo "Piping Suite v10.0 - Eng. Ibrahim Baaloul" > output/version.txt
 
-      - name: Upload Artifacts
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: piping-suite-app
-          path: build_output/
+          path: output/
