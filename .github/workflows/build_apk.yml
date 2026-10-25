@@ -8,17 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Create Package Archive
+      - name: Save App
         run: |
-          mkdir -p output
-          cp app.py output/app.py
-          echo "Piping Suite v10.0 - Eng. Ibrahim Baaloul" > output/version.txt
+          mkdir -p dist
+          cp app.py dist/app.py
 
-      - name: Upload Artifact
+      - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: piping-suite-app
-          path: output/
+          name: app-release-apk
+          path: dist/
